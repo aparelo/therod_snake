@@ -1,0 +1,1 @@
+A simple snake game written in C++ and Qt5. To run it open the project file in Visual Studio 2019, needs Visual Studio C++ redistributable 2019 and Qt5 to compile.

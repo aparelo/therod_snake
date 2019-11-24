@@ -90,7 +90,6 @@
   <ItemGroup>
     <ClCompile Include="apple.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="menu.cpp" />
     <ClCompile Include="snake.cpp" />
     <ClCompile Include="field.cpp" />
   </ItemGroup>
@@ -98,7 +97,6 @@
     <QtMoc Include="field.h" />
   </ItemGroup>
   <ItemGroup>
-    <QtUic Include="menu.ui" />
     <QtUic Include="threod_snake.ui" />
   </ItemGroup>
   <ItemGroup>
@@ -106,7 +104,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="apple.h" />
-    <QtMoc Include="menu.h" />
     <ClInclude Include="snake.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

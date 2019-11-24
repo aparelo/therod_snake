@@ -31,9 +31,6 @@
     <ClCompile Include="snake.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="menu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="apple.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -42,18 +39,12 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="menu.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
     <QtMoc Include="field.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="threod_snake.ui">
-      <Filter>Form Files</Filter>
-    </QtUic>
-    <QtUic Include="menu.ui">
       <Filter>Form Files</Filter>
     </QtUic>
   </ItemGroup>

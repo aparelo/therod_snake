@@ -1,7 +1,6 @@
 #include "field.h"
 #include <QtWidgets/QApplication>
 #include <QtCore>
-#include <menu.h>
 
 int main(int argc, char *argv[])
 {
