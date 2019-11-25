@@ -78,16 +78,17 @@ void field::initGame(bool firstGame) {
 	}
 	else {
 		if (!message.isNull()) {
-			scene->removeItem(game_over_text);
+			removeItem(game_over_text);
 		}
 		score = 0;
 		ui.lcdNumber->display(score);
 		//remove the current snake, draw snake removes the snake, but only up to the new length
+		int new_length = 3;
 		for (int i = 0; i < snake_1.length; i++) {
 			scene->removeItem(snake_1.snake_body[i]);
 			snake_1.body[i] = QRect();
 		}
-		snake_1.length = 3;
+		snake_1.length = new_length;
 		snake_1.direction[0] = 0;
 		snake_1.direction[1] = -1;
 
@@ -127,11 +128,11 @@ void field::drawSnake(int x, int y) {
 	QBrush greenBrush(Qt::green);
 
 	//delete the old snake
-	scene->removeItem(snake_1.snake_head);
+	removeItem(snake_1.snake_head);
 
 	//loop over the body and delete all elements
 	for (int j = 0;j < snake_1.length;j++) {
-		scene->removeItem(snake_1.snake_body[j]);
+		removeItem(snake_1.snake_body[j]);
 	}
 
 	//move snake to new location
@@ -154,9 +155,30 @@ void field::drawApple() {
 	QPen blackpen(Qt::black);
 	QBrush yellowBrush(Qt::yellow);
 
-	scene->removeItem(apple1.graphics);
+	removeItem(apple1.graphics);
 
-	apple1.moveApple();
+	int loops = 0;
+	while (true && loops < 100) {
+		loops++;
+		apple1.moveApple();
+		//check that the apple doesn't appear under the snake
+		int misses = 0;
+		for (int i = 0; i < snake_1.length; i++) {
+			if (abs(snake_1.body[i].x() - apple1.rect.x()) > 30 && abs(snake_1.body[i].y() - apple1.rect.y()) > 30) {
+				misses++;
+			}
+			else {
+				break;
+			}
+		}
+		if (misses == snake_1.length) {
+			break;
+		}
+	}
+	if (loops == 100) { //if random moving fails, move the apple 10 units in a random direction
+		apple1.moveAppleBy(10, 10, snake_1);
+	}
+	
 
 	QGraphicsRectItem* tempApple = scene->addRect(apple1.rect, blackpen, yellowBrush);
 	apple1.graphics = dynamic_cast<QGraphicsItem*>(tempApple);
@@ -201,6 +223,10 @@ void field::pauseGame() {
 
 }
 
+void field::removeItem(QGraphicsItem* item) {
+	scene->removeItem(item);
+	delete item;
+}
 
 void field::timerEvent(QTimerEvent* e) {
 

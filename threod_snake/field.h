@@ -60,4 +60,5 @@ private:
 	void checkApple();
 	void pauseGame();
 	void initGame(bool firstGame);
+	void removeItem(QGraphicsItem* item);
 };
