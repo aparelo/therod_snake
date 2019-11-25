@@ -43,7 +43,7 @@ void apple::moveAppleBy(int dx, int dy, snake snake_1)
 		int newX = rect.x() + (rand() % 3 - 1) * radius*dx;
 		int newY = rect.y() + (rand() % 3 - 1) * radius*dy;
 
-		if (newX < maxFieldWidth && newX > minFieldWidth&& newY < maxFieldHeight && newY > minFieldHeight) { //is in the field
+		if (newX < maxFieldWidth && newX > minFieldWidth && newY < maxFieldHeight && newY > minFieldHeight) { //is in the field
 			int misses = 0;
 			for (int i = 0; i < snake_1.length; i++) {
 				if (abs(snake_1.body[i].x() - rect.x()) > 30 && abs(snake_1.body[i].y() - rect.y()) > 30) {
